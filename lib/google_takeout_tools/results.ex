@@ -24,9 +24,13 @@ defmodule GoogleTakeoutTools.Results do
   end
 
   def handle_call(:save, _from, results) do
-    IO.puts MapSet.to_list(results)
+    content = MapSet.to_list(results)
+      |> Enum.sort_by(&Map.fetch(&1, :playcount), :desc)
       |> Enum.reduce("", fn song, string -> print(song, string) end)
-    { :reply, results, results }
+
+      # todo: make this configurable
+      File.write("playlist.txt", content)
+    { :reply, {:ok, MapSet.size(results) }, results }
   end
 
   def handle_cast({ :add, song }, playlist) do

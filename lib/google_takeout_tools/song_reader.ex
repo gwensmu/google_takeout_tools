@@ -29,7 +29,7 @@ defmodule GoogleTakeoutTools.SongReader do
       {:ok, row } = file
       |> Path.expand(__DIR__)
       |> File.stream!
-      |> CSV.decode(headers: [:title, :album, :artist, :duration, :rating, :playcount, :removed, :playlist_index])
+      |> CSV.decode(headers: [:title, :album, :artist, :duration, :rating, :playcount, :removed])
       |> Enum.at(1)
 
       song = %Song{title: row[:title], album: row[:album], artist: row[:artist], playcount: row[:playcount]}

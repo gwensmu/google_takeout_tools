@@ -9,9 +9,9 @@ defmodule GoogleTakeoutTools.Application do
   def start(_type, _args) do
     children = [
       GoogleTakeoutTools.Results,
-      { GoogleTakeoutTools.PathFinder, "/Users/gwensmuda/dev/elixir/google_takeout_tools/music_takeout/Playlists/Thumbs Up" },
+      { GoogleTakeoutTools.PathFinder, "/Users/gwensmuda/dev/elixir/google_takeout_tools/music_takeout/Tracks" },
       GoogleTakeoutTools.SongReaderSupervisor,
-      { GoogleTakeoutTools.Music, 1 },
+      { GoogleTakeoutTools.Music, 3 },
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
