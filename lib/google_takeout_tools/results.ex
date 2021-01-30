@@ -13,6 +13,8 @@ defmodule GoogleTakeoutTools.Results do
     GenServer.cast(@me, { :add, song })
   end
 
+  # Output format is list of songs: Artist - title
+  # Sutible for import into tidal via tune my music "free text" field
   def save() do
     GenServer.call(@me, :save)
   end
@@ -40,6 +42,6 @@ defmodule GoogleTakeoutTools.Results do
   end
 
   defp print(song, string) do
-    string <> "'#{song.title}', by #{song.artist} (#{song.playcount})\n"
+    string <> "#{song.artist} - #{song.title}\n"
   end
 end

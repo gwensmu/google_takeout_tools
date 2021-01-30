@@ -11,7 +11,7 @@ defmodule GoogleTakeoutTools.Application do
       GoogleTakeoutTools.Results,
       { GoogleTakeoutTools.PathFinder, "/Users/gwensmuda/dev/elixir/google_takeout_tools/music_takeout/Tracks" },
       GoogleTakeoutTools.SongReaderSupervisor,
-      { GoogleTakeoutTools.Music, 3 },
+      { GoogleTakeoutTools.Music, 5 },
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
