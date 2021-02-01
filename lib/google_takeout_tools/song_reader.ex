@@ -11,7 +11,7 @@ defmodule GoogleTakeoutTools.SongReader do
 
   def init(:no_args) do
     Process.send_after(self(), :parse_one_file, 0)
-    { :ok, nil }
+    {:ok, nil}
   end
 
   def handle_info(:parse_one_file, _) do
@@ -26,17 +26,26 @@ defmodule GoogleTakeoutTools.SongReader do
 
   def add_song(file) do
     if Path.extname(file) == ".csv" do
-      {:ok, row } = file
-      |> Path.expand(__DIR__)
-      |> File.stream!
-      |> CSV.decode(headers: [:title, :album, :artist, :duration, :rating, :playcount, :removed])
-      |> Enum.at(1)
+      {:ok, row} =
+        file
+        |> Path.expand(__DIR__)
+        |> File.stream!()
+        |> CSV.decode(
+          headers: [:title, :album, :artist, :duration, :rating, :playcount, :removed]
+        )
+        |> Enum.at(1)
 
-      song = %Song{title: row[:title], album: row[:album], artist: row[:artist], playcount: row[:playcount]}
+      song = %Song{
+        title: row[:title],
+        album: row[:album],
+        artist: row[:artist],
+        playcount: row[:playcount]
+      }
+
       GoogleTakeoutTools.Music.add_to_playlist(song)
     end
 
     send(self(), :parse_one_file)
-    { :noreply, nil }
+    {:noreply, nil}
   end
 end

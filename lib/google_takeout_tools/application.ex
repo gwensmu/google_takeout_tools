@@ -9,9 +9,10 @@ defmodule GoogleTakeoutTools.Application do
   def start(_type, _args) do
     children = [
       GoogleTakeoutTools.Results,
-      { GoogleTakeoutTools.PathFinder, Application.fetch_env!(:google_takeout_tools, :music_import_dir)},
+      {GoogleTakeoutTools.PathFinder,
+       Application.fetch_env!(:google_takeout_tools, :music_import_dir)},
       GoogleTakeoutTools.SongReaderSupervisor,
-      { GoogleTakeoutTools.Music, Application.fetch_env!(:google_takeout_tools, :music_workers) },
+      {GoogleTakeoutTools.Music, Application.fetch_env!(:google_takeout_tools, :music_workers)}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

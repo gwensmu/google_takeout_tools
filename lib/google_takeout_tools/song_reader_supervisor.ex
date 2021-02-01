@@ -7,7 +7,6 @@ defmodule GoogleTakeoutTools.SongReaderSupervisor do
     DynamicSupervisor.start_link(__MODULE__, :no_args, name: @me)
   end
 
-
   def init(:no_args) do
     DynamicSupervisor.init(strategy: :one_for_one)
   end
