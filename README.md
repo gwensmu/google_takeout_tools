@@ -1,6 +1,6 @@
 # Google Takeout Tools
 
-Currently just a utility to take the massive collection of CSVs that Google sends you when you do Google Takeout on your Google Music (RIP) and turn it into a text summary of your music life.
+Currently just a utility to take the massive collection of CSVs that Google sends you when you do Google Takeout on your Google Music (RIP) and turn it into a text summary of your music life, sutible for import via Tune My Music.
 
 Presumably its a generic dump of their bigtable or something but, I mean, really, why did they send me thousands of individual CSV files of one row each, where each row is a song?
 
