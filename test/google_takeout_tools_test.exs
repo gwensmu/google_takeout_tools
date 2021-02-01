@@ -13,4 +13,8 @@ defmodule GoogleTakeoutToolsTest do
 
     assert Results.save() == { :ok, 4}
   end
+
+  test "can create a list of tracks" do
+    assert Results.save() == { :ok, 3}
+  end
 end

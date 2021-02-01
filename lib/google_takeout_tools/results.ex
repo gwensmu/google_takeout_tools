@@ -30,8 +30,7 @@ defmodule GoogleTakeoutTools.Results do
       |> Enum.sort_by(&Map.fetch(&1, :playcount), :desc)
       |> Enum.reduce("", fn song, string -> print(song, string) end)
 
-      # todo: make this configurable
-      File.write("playlist.txt", content)
+      File.write(Application.fetch_env!(:google_takeout_tools, :output_file), content)
     { :reply, {:ok, MapSet.size(results) }, results }
   end
 
