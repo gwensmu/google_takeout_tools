@@ -20,8 +20,10 @@ defmodule GoogleTakeoutTools.MixProject do
 
   defp deps do
     [
-      csv: "~> 2.4.1",
-      dir_walker: "~> 0.0.8"
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
+      {:csv, "~> 2.4.1"},
+      {:dir_walker, "~> 0.0.8"}
     ]
   end
 end

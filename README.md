@@ -18,6 +18,12 @@ mix run --no-halt
 mix test --no-start
 ```
 
+## Run static analysis
+
+```bash
+mix dialyzer --no-check --halt-exit-status
+```
+
 ## Performance Comparison to Plain Old Ruby:
 
 Not actually trying to make the case here that Ruby is superior (well, for this use case maybe) - just good to get data.

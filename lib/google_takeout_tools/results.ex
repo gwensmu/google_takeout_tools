@@ -1,6 +1,11 @@
 defmodule GoogleTakeoutTools.Results do
   use GenServer
 
+  @moduledoc """
+  Manages a collection of songs and writes details about them to a file,
+  for consumption by the playlist import tool 'Tune My Music'.
+  """
+
   @me __MODULE__
 
   # API
@@ -14,8 +19,8 @@ defmodule GoogleTakeoutTools.Results do
   end
 
   # Output format is list of songs: Artist - title
-  # Sutible for import into tidal via tune my music "free text" field
-  def save() do
+  # Suitable for import into tidal via tune my music "free text" field
+  def save do
     GenServer.call(@me, :save)
   end
 
