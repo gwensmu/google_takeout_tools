@@ -5,16 +5,20 @@ defmodule GoogleTakeoutToolsTest do
 
   doctest GoogleTakeoutTools
 
-  test "can create a list of tracks, sorted by play count" do
-    Results.add_entry_for(%Song{title: "Happy", album: "Sad", artist: "Kid", playcount: 30})
-    Results.add_entry_for(%Song{title: "Robble", album: "Sad", artist: "Kid", playcount: 3})
-    Results.add_entry_for(%Song{title: "Roy", album: "Sad", artist: "Kid", playcount: 0})
-    Results.add_entry_for(%Song{title: "Beans", album: "Sad", artist: "Kid", playcount: 122})
+  test "can export a list of tracks to a text file" do
+    {:ok, pid} = Results.start_link({})
+
+    Results.add_entry_for(%Song{title: "Happy", album: "Hoover", artist: "Kid", playcount: 30})
+    Results.add_entry_for(%Song{title: "Robble", album: "Hoover", artist: "Kid", playcount: 3})
+    Results.add_entry_for(%Song{title: "Roy", album: "Hoover", artist: "Kid", playcount: 0})
+    Results.add_entry_for(%Song{title: "Beans", album: "Hoover", artist: "Kid", playcount: 122})
+
+    output_file = Application.fetch_env!(:google_takeout_tools, :output_file)
 
     assert Results.save() == { :ok, 4}
-  end
+    assert File.exists?(output_file)
 
-  test "can create a list of tracks" do
-    assert Results.save() == { :ok, 3}
+    File.rm(output_file)
+    Process.exit(pid, :kill)
   end
 end
