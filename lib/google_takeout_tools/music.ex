@@ -12,7 +12,7 @@ defmodule GoogleTakeoutTools.Music do
     GenServer.start_link(__MODULE__, worker_count, name: @me)
   end
 
-  def done() do
+  def done do
     GenServer.cast(@me, :done)
   end
 
@@ -48,7 +48,7 @@ defmodule GoogleTakeoutTools.Music do
     {:noreply, worker_count}
   end
 
-  defp save_playlist() do
+  defp save_playlist do
     GoogleTakeoutTools.Results.save()
   end
 end

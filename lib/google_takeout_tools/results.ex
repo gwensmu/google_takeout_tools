@@ -20,7 +20,7 @@ defmodule GoogleTakeoutTools.Results do
 
   # Output format is list of songs: Artist - title
   # Suitable for import into tidal via tune my music "free text" field
-  def save() do
+  def save do
     GenServer.call(@me, :save)
   end
 

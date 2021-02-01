@@ -15,7 +15,7 @@ defmodule GoogleTakeoutTools.SongReaderSupervisor do
     DynamicSupervisor.init(strategy: :one_for_one)
   end
 
-  def add_worker() do
+  def add_worker do
     {:ok, _pid} = DynamicSupervisor.start_child(@me, GoogleTakeoutTools.SongReader)
   end
 end

@@ -11,7 +11,7 @@ defmodule GoogleTakeoutTools.PathFinder do
     GenServer.start_link(__MODULE__, root, name: @me)
   end
 
-  def next_path() do
+  def next_path do
     GenServer.call(@me, :next_path)
   end
 
