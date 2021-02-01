@@ -6,6 +6,12 @@ Presumably its a generic dump of their bigtable or something but, I mean, really
 
 On the plus side, a project to practice an Elixir / OTP application.
 
+## Run Music Takeout tools
+
+```bash
+mix run --no-halt
+```
+
 ## Run Tests
 
 ```bash
