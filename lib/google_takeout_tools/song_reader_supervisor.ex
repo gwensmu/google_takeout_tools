@@ -1,6 +1,10 @@
 defmodule GoogleTakeoutTools.SongReaderSupervisor do
   use DynamicSupervisor
 
+  @moduledoc """
+  Supervises SongReaders.
+  """
+
   @me SongReaderSupervisor
 
   def start_link(_) do

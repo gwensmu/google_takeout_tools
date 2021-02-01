@@ -1,7 +1,15 @@
 defmodule GoogleTakeoutTools.SongReader do
   use GenServer, restart: :transient
 
+  @moduledoc """
+  Parses a CSV file provided by Google Takeout Tools and returns a Song.
+  """
+
   defmodule Song do
+    @moduledoc """
+    Metadata about a single Song.
+    """
+
     defstruct title: nil, album: nil, artist: nil, playcount: 1
   end
 

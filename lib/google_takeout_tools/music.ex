@@ -1,6 +1,10 @@
 defmodule GoogleTakeoutTools.Music do
   use GenServer
 
+  @moduledoc """
+  Coordinates between SongReaders and Results to build up a playlist of songs.
+  """
+
   @me Music
 
   # API

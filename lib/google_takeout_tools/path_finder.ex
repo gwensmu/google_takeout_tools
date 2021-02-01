@@ -1,6 +1,10 @@
 defmodule GoogleTakeoutTools.PathFinder do
   use GenServer
 
+  @moduledoc """
+  Serves paths from a directory to workers who want them.
+  """
+
   @me PathFinder
 
   def start_link(root) do
