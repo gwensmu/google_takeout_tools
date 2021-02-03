@@ -6,6 +6,8 @@ Presumably its a generic dump of their bigtable or something but, I mean, really
 
 On the plus side, a project to practice an Elixir / OTP application.
 
+![Supervision Tree](supervision_tree.png)
+
 ## Run Music Takeout tools
 
 ```bash

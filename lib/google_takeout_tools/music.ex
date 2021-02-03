@@ -2,7 +2,8 @@ defmodule GoogleTakeoutTools.Music do
   use GenServer
 
   @moduledoc """
-  Coordinates between SongReaders and Results to build up a playlist of songs.
+  Coordinates between SongReaders and Results to build up a playlist of songs. Tracks
+  state and status of workers - how many there are, and when they're done with their work.
   """
 
   @me Music
@@ -21,7 +22,8 @@ defmodule GoogleTakeoutTools.Music do
   end
 
   # server
-
+  # Worker count is state that is maintained by this process.
+  # OTP GenServer callbacks let you change this state in this module context
   def init(worker_count) do
     Process.send_after(self(), :kickoff, 0)
     {:ok, worker_count}
@@ -39,15 +41,19 @@ defmodule GoogleTakeoutTools.Music do
     System.halt(0)
   end
 
+  # Here we are, changing the state of worker_count
   def handle_cast(:done, worker_count) do
     {:noreply, worker_count - 1}
   end
 
+  # Passing state around without mutating it
   def handle_cast({:add, song}, worker_count) do
     GoogleTakeoutTools.Results.add_entry_for(song)
     {:noreply, worker_count}
   end
 
+  # Calling out to the results module because the playlist is a different
+  # chunk o state that the Results module owns
   defp save_playlist do
     GoogleTakeoutTools.Results.save()
   end

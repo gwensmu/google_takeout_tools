@@ -15,6 +15,9 @@ defmodule GoogleTakeoutTools.PathFinder do
     GenServer.call(@me, :next_path)
   end
 
+  # This is cool, the state here is encapsulated in a module that's
+  # lazily traversing directory trees
+  # As opposed to a simple data structure like a map or an integer
   def init(path) do
     DirWalker.start_link(path)
   end

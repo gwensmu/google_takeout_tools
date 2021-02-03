@@ -26,10 +26,13 @@ defmodule GoogleTakeoutTools.Results do
 
   # Server
 
+  # We're not initalizing with state, but by returning a MapSet,
+  # our collection is now accessible as state in the callbacks below.
   def init(:no_args) do
     {:ok, MapSet.new()}
   end
 
+  # Results was initalized on line 32 above when this GenServer started
   def handle_call(:save, _from, results) do
     content =
       MapSet.to_list(results)
@@ -40,6 +43,7 @@ defmodule GoogleTakeoutTools.Results do
     {:reply, {:ok, MapSet.size(results)}, results}
   end
 
+  # Mutating the playlist state
   def handle_cast({:add, song}, playlist) do
     playlist = MapSet.put(playlist, song)
     {:noreply, playlist}
